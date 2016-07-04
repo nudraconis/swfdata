@@ -59,8 +59,8 @@ package swfdata.atlas
 		public function clear():void 
 		{
 			subTextures = null;
-			atlasData.dispose();
-			atlasData = null;
+			//atlasData.dispose();
+			//atlasData = null;
 		}
 		
 		public function get padding():Number 

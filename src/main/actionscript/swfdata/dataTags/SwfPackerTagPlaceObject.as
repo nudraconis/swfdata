@@ -105,12 +105,6 @@ package swfdata.dataTags
 			instanceName = null;
 		}
 		
-		public function addColorMatrixArray(matrix:Array):void 
-		{
-			var v:Vector.<Number> = new Vector.<Number>;
-			v.push.apply(null, matrix);
-		}
-		
 		public function toString():String 
 		{
 			return "[SwfPackerTagPlaceObject depth=" + depth + " characterId=" + characterId + " placeMode=" + placeMode + 
