@@ -81,7 +81,8 @@ package swfdata.atlas
 		public function dispose(disposeSource:Boolean = false):void 
 		{
 			disposed = true;
-			gTextureAtlas.dispose(disposeSource);
+			//gTextureAtlas.dispose(disposeSource);
+			gTextureAtlas.dispose();
 		}
 		
 		public function get padding():Number 
