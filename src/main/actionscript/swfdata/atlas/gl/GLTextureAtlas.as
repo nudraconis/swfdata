@@ -1,19 +1,20 @@
-package swfdata.atlas 
+package swfdata.atlas.gl 
 {
-	import com.genome2d.textures.GTexture;
-	import com.genome2d.textures.GTexture;
-	import com.genome2d.textures.GTextureManager;
 	import flash.display.BitmapData;
 	import flash.display3D.Context3DTextureFormat;
+	import flash.display3D.textures.Texture;
 	import flash.geom.Rectangle;
-	
 	import swfdata.swfdata_inner;
+	import swfdata.atlas.ITexture;
+	import swfdata.atlas.ITextureAtlas;
+	import swfdata.atlas.TextureTransform;
+	import swfdata.atlas.genome.GenomeSubTexture;
 	
 	use namespace swfdata_inner;
 
-	public class GenomeTextureAtlas implements ITextureAtlas 
+	public class GLTextureAtlas implements ITextureAtlas 
 	{
-		public var gTextureAtlas:GTexture;
+		public var gpuData:Texture;
 		public var atlasData:BitmapData;
 		public var disposed:Boolean = false;
 		
@@ -23,12 +24,14 @@ package swfdata.atlas
 		
 		swfdata_inner var _padding:Number = 0;
 		
-		public function GenomeTextureAtlas(id:String, atlasData:BitmapData, format:String, padding:Number = 0) 
+		public function GLTextureAtlas(id:String, atlasData:BitmapData, format:String, padding:Number = 0) 
 		{
 			this.atlasData = atlasData;
 			this._padding = padding;
 				
-			gTextureAtlas = GTextureManager.createTexture(id, atlasData, 1, false, format);
+			gpuData = GLTextureManager.createTexture(id, atlasData, 1, false, format);
+			gpuData.uploadFromBitmapData(atlasData);
+			
 			gpuMemorySize = calculateGPUSize(format, atlasData.width, atlasData.height);
 		}
 		
@@ -52,12 +55,12 @@ package swfdata.atlas
 		
 		public function reupload():void
 		{
-			gTextureAtlas.invalidateNativeTexture(true);
+			//gTextureAtlas.invalidateNativeTexture(true);
 		}
 		
 		public function createSubTexture(id:int, region:Rectangle, transformX:Number, transformY:Number):void
 		{
-			var subTeture:GenomeSubTexture = new GenomeSubTexture(id, region, new TextureTransform(transformX, transformY), gTextureAtlas);
+			var subTeture:GLSubTexture = new GLSubTexture(id, region, new TextureTransform(transformX, transformY), this);
 				
 			putTexture(subTeture);
 		}
@@ -82,7 +85,7 @@ package swfdata.atlas
 		{
 			disposed = true;
 			//gTextureAtlas.dispose(disposeSource);
-			gTextureAtlas.dispose();
+			//textureAtlas.dispose();
 		}
 		
 		public function get padding():Number 
