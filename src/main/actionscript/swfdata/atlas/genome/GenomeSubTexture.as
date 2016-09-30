@@ -1,9 +1,12 @@
-package swfdata.atlas 
+package swfdata.atlas.genome 
 {
 	import com.genome2d.textures.GTexture;
 	import com.genome2d.textures.GTextureManager;
+	import flash.display3D.textures.Texture;
 	import flash.geom.Rectangle;
 	import swfdata.swfdata_inner;
+	import swfdata.atlas.ITexture;
+	import swfdata.atlas.TextureTransform;
 	
 	use namespace swfdata_inner;
 	
@@ -35,6 +38,12 @@ package swfdata.atlas
 			gTexture = GTextureManager.createSubTexture(atlas.id + "::" + idAsString, atlas, _bounds, null, false);
 			//gTexture.pivotX = -bounds.width / 2;
 			//gTexture.pivotY = -bounds.height / 2;
+		}
+		
+		
+		public function get gpuData():Texture 
+		{
+			return gTexture.g2d_nativeTexture as Texture;
 		}
 		
 		public function get id():int 
