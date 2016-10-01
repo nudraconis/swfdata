@@ -28,7 +28,7 @@ package swfdata.atlas
 			this.targetAtlas = targetAtlas;
 			this.padding = padding;
 			this.scale = scale;
-			atlasData = targetAtlas.atlasData;
+			atlasData = targetAtlas.data;
 			
 			clean();
 		}
