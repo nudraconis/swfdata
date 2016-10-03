@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="FastMath"/>
+    <classEntry path="GeomMath"/>
+    <classEntry path="IUpdatable"/>
+    <classEntry path="swfdata.ColorData"/>
+    <classEntry path="swfdata.ColorMatrix"/>
+    <classEntry path="swfdata.DisplayObjectContainer"/>
+    <classEntry path="swfdata.DisplayObjectData"/>
+    <classEntry path="swfdata.DisplayObjectTypes"/>
+    <classEntry path="swfdata.FrameData"/>
+    <classEntry path="swfdata.FrameObjectData"/>
+    <classEntry path="swfdata.IDisplayObjectContainer"/>
+    <classEntry path="swfdata.ITimeline"/>
+    <classEntry path="swfdata.ITimelineContainer"/>
+    <classEntry path="swfdata.LayerData"/>
+    <classEntry path="swfdata.MaskData"/>
+    <classEntry path="swfdata.MovieClipData"/>
+    <classEntry path="swfdata.Rectagon"/>
+    <classEntry path="swfdata.ShapeData"/>
+    <classEntry path="swfdata.ShapeLibrary"/>
+    <classEntry path="swfdata.ShapeLibraryItem"/>
+    <classEntry path="swfdata.SpriteData"/>
+    <classEntry path="swfdata.SymbolsLibrary"/>
+    <classEntry path="swfdata.Timeline"/>
+    <classEntry path="swfdata.atlas.Atlas"/>
+    <classEntry path="swfdata.atlas.AtlasDrawer"/>
+    <classEntry path="swfdata.atlas.AtlasDrawerUtils"/>
+    <classEntry path="swfdata.atlas.AtlasRegion"/>
+    <classEntry path="swfdata.atlas.BaseSubTexture"/>
+    <classEntry path="swfdata.atlas.BaseTextureAtlas"/>
+    <classEntry path="swfdata.atlas.BitmapSubTexture"/>
+    <classEntry path="swfdata.atlas.BitmapTextureAtlas"/>
+    <classEntry path="swfdata.atlas.Subtexture"/>
+    <classEntry path="swfdata.atlas.TextureTransform"/>
+    <classEntry path="swfdata.atlas.gl.GLSubTexture"/>
+    <classEntry path="swfdata.atlas.gl.GLTextureAtlas"/>
+    <classEntry path="swfdata.atlas.gl.GLTextureManager"/>
+    <classEntry path="swfdata.dataTags.RawClassSymbol"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTag"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTagDefineSprite"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTagEnd"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTagPlaceObject"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTagRemoveObject"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTagShowFrame"/>
+    <classEntry path="swfdata.dataTags.SwfPackerTagSymbolClass"/>
+    <classEntry path="swfdata.swfdata_inner"/>
+    <classEntry path="utils.BitMask"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
