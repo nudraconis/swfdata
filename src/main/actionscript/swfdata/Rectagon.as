@@ -62,7 +62,8 @@ package swfdata
 			if (_transform == rectagon._transform)
 				_transform = _transform.clone();
 				
-			_transform.concat(rectagon._transform);
+			GeomMath.concatMatrices(_transform, rectagon._transform, _transform);
+			//_transform.concat(rectagon._transform);
 			
 			localX = Math.min(localX, rectagon.localX);
 			localY = Math.min(localY, rectagon.localY);

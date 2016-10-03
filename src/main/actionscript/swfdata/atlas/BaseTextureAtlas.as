@@ -52,7 +52,8 @@ package swfdata.atlas
 		/**
 		 * @inheritDoc
 		 */
-		public function getTexture(textureId:int):BaseSubTexture 
+		[Inline]
+		public final function getTexture(textureId:int):BaseSubTexture 
 		{
 			return subTextures[textureId];
 		}

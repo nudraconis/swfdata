@@ -121,10 +121,10 @@ package swfdata
 		{
 			for (var i:int = 0; i < displayObjectsCount; i++)
 			{
-				if (_displayObjects[i] is IUpdatable)
-				{
-					(_displayObjects[i] as IUpdatable).update();
-				}
+				var displayObjectAsUpdatable:IUpdatable = _displayObjects[i] as IUpdatable;
+				
+				if (displayObjectAsUpdatable != null)
+					displayObjectAsUpdatable.update();
 			}
 		}
 		

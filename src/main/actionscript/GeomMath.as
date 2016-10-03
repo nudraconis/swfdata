@@ -50,17 +50,31 @@ package
 		[Inline]
 		public static function concatMatrices(matrixA:Matrix, matrixB:Matrix, dest:Matrix):void
 		{
-			var a:Number = matrixA.a * matrixB.a + matrixA.b * matrixB.c;
-			var b:Number = matrixA.a * matrixB.b + matrixA.b * matrixB.d;
+			var ma:Number = matrixA.a;
+			var mb:Number = matrixA.b;
+			var mc:Number = matrixA.c;
+			var md:Number = matrixA.d;
+			var mtx:Number = matrixA.tx;
+			var mty:Number = matrixA.ty;
 			
-			var c:Number = matrixA.c * matrixB.a + matrixA.d * matrixB.c;
-			var d:Number = matrixA.c * matrixB.b + matrixA.d * matrixB.d;
+			var ba:Number = matrixB.a;
+			var bb:Number = matrixB.b;
+			var bc:Number = matrixB.c;
+			var bd:Number = matrixB.d;
+			var btx:Number = matrixB.tx;
+			var bty:Number = matrixB.ty;
 			
-			var tx:Number = matrixA.tx * matrixB.a + matrixA.ty * matrixB.c + matrixB.tx;
-			var ty:Number = matrixA.tx * matrixB.b + matrixA.ty * matrixB.d + matrixB.ty;
+			var a:Number = ma * ba + mb * bc;
+			var b:Number = ma * bb + mb * bd;
+			
+			var c:Number = mc * ba + md * bc;
+			var d:Number = mc * bb + md * bd;
+			
+			var tx:Number = mtx * ba + mty * bc + btx;
+			var ty:Number = mtx * bb + mty * bd + bty;
 			
 			dest.a = a;
-			dest.b =  b;
+			dest.b = b;
 			dest.c = c;
 			dest.d = d;
 			dest.tx = tx;

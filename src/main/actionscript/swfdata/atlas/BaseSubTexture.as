@@ -11,6 +11,8 @@ package swfdata.atlas
 		
 		public var atlas:BaseTextureAtlas;
 		
+		public var gpuData:Texture;
+		
 		public var u:Number = 0;
 		public var v:Number = 0;
 		
@@ -40,12 +42,9 @@ package swfdata.atlas
 				
 				this.uscale = width / atlas.width;
 				this.vscale = height / atlas.height;
+				
+				gpuData = atlas.gpuData;
 			}
-		}
-		
-		public function get gpuData():Texture 
-		{
-			return atlas.gpuData;
 		}
 		
 		public function getAlphaAtUV(u:Number, v:Number):Number

@@ -29,11 +29,8 @@ package swfdata.atlas.genome
 			gTexture = GTextureManager.createSubTexture(atlas.id + "::" + idAsString, (atlas as GenomeTextureAtlas).gTextureAtlas, bounds, null, false);
 			//gTexture.pivotX = -bounds.width / 2;
 			//gTexture.pivotY = -bounds.height / 2;
-		}
-		
-		override public function get gpuData():Texture 
-		{
-			return gTexture.g2d_nativeTexture as Texture;
+			
+			gpuData = gTexture.g2d_nativeTexture as Texture;
 		}
 	}
 }

@@ -170,16 +170,15 @@ package swfdata
 		
 		public function update():void 
 		{
-			
-			var displayObjectsList:Vector.<DisplayObjectData> = _currentFrameData.displayObjects;
+			var displayObjectsList:Vector.<DisplayObjectData> = _currentFrameData._displayObjects;
 			var displayObjectsCount:int = displayObjectsList.length;
 			
 			for (var i:int = 0 ; i < displayObjectsCount; i++)
 			{
-				var currentDisplayObject:DisplayObjectData = displayObjectsList[i];
+				var currentDisplayObject:IUpdatable = displayObjectsList[i] as IUpdatable;
 				
-				if (currentDisplayObject is IUpdatable)
-					(currentDisplayObject as IUpdatable).update();
+				if (currentDisplayObject != null)
+					currentDisplayObject.update();
 			}
 			
 			if (!_isPlaying)
