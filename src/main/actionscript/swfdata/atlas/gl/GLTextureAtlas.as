@@ -5,34 +5,26 @@ package swfdata.atlas.gl
 	import flash.display3D.textures.Texture;
 	import flash.geom.Rectangle;
 	import swfdata.swfdata_inner;
-	import swfdata.atlas.ITexture;
-	import swfdata.atlas.ITextureAtlas;
+	import swfdata.atlas.BaseSubTexture;
+	import swfdata.atlas.BaseTextureAtlas;
 	import swfdata.atlas.TextureTransform;
-	import swfdata.atlas.genome.GenomeSubTexture;
 	
 	use namespace swfdata_inner;
 
-	public class GLTextureAtlas implements ITextureAtlas 
+	public class GLTextureAtlas extends BaseTextureAtlas
 	{
-		public var gpuData:Texture;
-		public var atlasData:BitmapData;
 		public var disposed:Boolean = false;
 		
 		public var gpuMemorySize:Number = 0;
-		
-		private var subTextures:Object = { };
-		
-		swfdata_inner var _padding:Number = 0;
-		
-		public function GLTextureAtlas(id:String, atlasData:BitmapData, format:String, padding:Number = 0) 
+
+		public function GLTextureAtlas(id:String, data:BitmapData, format:String, padding:Number = 0) 
 		{
-			this.atlasData = atlasData;
-			this._padding = padding;
+			super(id, data, padding);
 				
-			gpuData = GLTextureManager.createTexture(id, atlasData, 1, false, format);
-			gpuData.uploadFromBitmapData(atlasData);
+			gpuData = GLTextureManager.createTexture(id, data, 1, false, format);
+			gpuData.uploadFromBitmapData(data);
 			
-			gpuMemorySize = calculateGPUSize(format, atlasData.width, atlasData.height);
+			gpuMemorySize = calculateGPUSize(format, data.width, data.height);
 		}
 		
 		private function calculateGPUSize(format:String, nativeWidth:int, nativeHeight:int):Number
@@ -65,39 +57,11 @@ package swfdata.atlas.gl
 			putTexture(subTeture);
 		}
 		
-		/**
-		 * @inheritDoc
-		 */
-		public function getTexture(textureId:int):ITexture 
-		{
-			return subTextures[textureId];
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		public function putTexture(texture:ITexture):void
-		{
-			subTextures[texture.id] = texture;
-		}
-		
 		public function dispose(disposeSource:Boolean = false):void 
 		{
 			disposed = true;
 			//gTextureAtlas.dispose(disposeSource);
 			//textureAtlas.dispose();
 		}
-		
-		public function get padding():Number 
-		{
-			return _padding;
-		}
-		
-		public function set padding(value:Number):void 
-		{
-			_padding = value;
-		}
-		
 	}
-
 }
