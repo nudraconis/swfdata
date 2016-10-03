@@ -121,7 +121,7 @@ package swfdata.atlas
 			var checkerIndex:int = FastMath.log(powerOf2Size, 2);
 			
 			
-			var boundChecker:BitmapData = AtlasDrawerUtils.boundCheckers[checkerIndex];
+			var boundChecker:BitmapData = AtlasDrawerUtils.getColorBoundCheck(checkerIndex);
 			boundChecker.drawWithQuality(shape, DRAWING_MATRIX, null, null, null, false, StageQuality.BEST);
 				
 			if(drawAdditionalAA)
@@ -159,6 +159,11 @@ package swfdata.atlas
 			targetAtlas.putTexture(subtexture);
 			
 			return bitmapBoundRect;
+		}
+		
+		public function dispose():void 
+		{
+			targetAtlas.dispose();
 		}
 	}
 }

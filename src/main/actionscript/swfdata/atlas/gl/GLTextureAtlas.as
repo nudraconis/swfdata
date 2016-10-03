@@ -57,8 +57,10 @@ package swfdata.atlas.gl
 			putTexture(subTeture);
 		}
 		
-		public function dispose(disposeSource:Boolean = false):void 
+		override public function dispose():void//(disposeSource:Boolean = false):void 
 		{
+			super.dispose();
+			
 			disposed = true;
 			//gTextureAtlas.dispose(disposeSource);
 			//textureAtlas.dispose();

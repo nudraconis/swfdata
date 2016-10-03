@@ -5,62 +5,35 @@ package swfdata.atlas.genome
 	import flash.display3D.textures.Texture;
 	import flash.geom.Rectangle;
 	import swfdata.swfdata_inner;
-	import swfdata.atlas.ITexture;
+	import swfdata.atlas.BaseSubTexture;
+	import swfdata.atlas.BaseTextureAtlas;
 	import swfdata.atlas.TextureTransform;
 	
 	use namespace swfdata_inner;
 	
-	public class GenomeSubTexture implements ITexture 
+	public class GenomeSubTexture extends BaseSubTexture 
 	{
-		private var _id:int;
 		private var idAsString:String;
-		swfdata_inner var _transform:TextureTransform;
-		private var _bounds:Rectangle;
-		
-		private var atlas:GTexture;
-		
 		public var gTexture:GTexture;
 		
-		public function GenomeSubTexture(id:int, bounds:Rectangle, transform:TextureTransform, atlas:GTexture) 
+		public function GenomeSubTexture(id:int, bounds:Rectangle, transform:TextureTransform, atlas:BaseTextureAtlas) 
 		{
-			this.atlas = atlas;
+			super(id, bounds, transform, atlas);
 			
-			_bounds = bounds;
-			_id = id;
 			idAsString = id.toString();
-			_transform = transform;
-			
 			uploadTexture();
 		}
 		
 		public function uploadTexture():void
 		{
-			gTexture = GTextureManager.createSubTexture(atlas.id + "::" + idAsString, atlas, _bounds, null, false);
+			gTexture = GTextureManager.createSubTexture(atlas.id + "::" + idAsString, (atlas as GenomeTextureAtlas).gTextureAtlas, bounds, null, false);
 			//gTexture.pivotX = -bounds.width / 2;
 			//gTexture.pivotY = -bounds.height / 2;
 		}
 		
-		
-		public function get gpuData():Texture 
+		override public function get gpuData():Texture 
 		{
 			return gTexture.g2d_nativeTexture as Texture;
 		}
-		
-		public function get id():int 
-		{
-			return _id;
-		}
-		
-		public function get transform():TextureTransform 
-		{
-			return _transform;
-		}
-		
-		public function get bounds():Rectangle 
-		{
-			return _bounds;
-		}
-		
 	}
-
 }

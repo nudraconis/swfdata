@@ -23,6 +23,25 @@ package swfdata.atlas
 			this.id = id;
 			this.padding = padding;
 			
+			setData(data);
+		}
+		
+		public function dispose():void 
+		{
+			if (data)
+			{
+				data.dispose();
+				data = null;
+			}
+			
+			texturesCount = 0;
+			subTextures = null;
+		}
+		
+		public function setData(data:BitmapData):void 
+		{
+			this.data = data;
+			
 			if (data)
 			{
 				width = data.width;
