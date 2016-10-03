@@ -1,6 +1,5 @@
 package swfdata 
 {
-	import haxe.ds._StringMap.StringMapKeysIterator;
 	use namespace swfdata_inner;
 	
 	public class Timeline implements ITimeline, ITimelineContainer, IUpdatable

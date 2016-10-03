@@ -44,7 +44,7 @@ package swfdata
 		public var name:String;
 		
 		
-		public function DisplayObjectData(characterId:int = -1, displayObjectType:int = DisplayObjectTypes.DISPALY_OBJECT_TYPE) 
+		public function DisplayObjectData(characterId:int = -1, displayObjectType:int = 0) 
 		{
 			this.displayObjectType = displayObjectType;
 			this.characterId = characterId;

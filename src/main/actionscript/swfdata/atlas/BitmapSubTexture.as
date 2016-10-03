@@ -33,7 +33,7 @@ package swfdata.atlas
 		
 		public function getAlphaAtUV(u:Number, v:Number):Number
 		{
-			return null;
+			return 0;
 		}	
 		
 		public function get pivotX():Number 
