@@ -56,7 +56,7 @@ package swfdata.atlas.genome
 			putTexture(subTeture);
 		}
 		
-		public function dispose(disposeSource:Boolean = false):void 
+		override public function dispose():void//disposeSource:Boolean = false):void 
 		{
 			disposed = true;
 			//gTextureAtlas.dispose(disposeSource);
