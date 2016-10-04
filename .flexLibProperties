@@ -4,6 +4,7 @@
     <classEntry path="FastMath"/>
     <classEntry path="GeomMath"/>
     <classEntry path="IUpdatable"/>
+    <classEntry path="PooledMatrix"/>
     <classEntry path="swfdata.ColorData"/>
     <classEntry path="swfdata.ColorMatrix"/>
     <classEntry path="swfdata.DisplayObjectContainer"/>
