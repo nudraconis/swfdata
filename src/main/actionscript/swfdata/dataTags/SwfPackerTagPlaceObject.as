@@ -37,7 +37,19 @@ package swfdata.dataTags
 		public var ty:Number = 0;
 		//matrix
 		
-		public var redColor0:Number = 0;
+		//color data
+		
+		public var redMultiplier:Number = 1;
+		public var greenMultiplier:Number = 1;
+		public var blueMultiplier:Number = 1;
+		public var alphaMultiplier:Number = 1;
+		
+		public var redAdd:int = 255;
+		public var greenAdd:int = 255;
+		public var blueAdd:int = 255;
+		public var alphaAdd:int = 255;
+		
+		/*public var redColor0:Number = 0;
 		public var redColor1:Number = 0;
 		public var redColor2:Number = 0;
 		public var redColor3:Number = 0;
@@ -59,17 +71,17 @@ package swfdata.dataTags
 		public var alpha1:Number = 0;
 		public var alpha2:Number = 0;
 		public var alpha3:Number = 0;
-		public var alphaOffset:Number = 0;
+		public var alphaOffset:Number = 0;*/
 		
 		
-		public function toColorMatrixString():String 
+		/*public function toColorMatrixString():String 
 		{
 			return "[Tag#ColorMatrix" +
 						"\n" + redColor0 + "\t" + redColor1 + "\t" + redColor2 + "\t" + redColor3 + "\t" + redColorOffset + 
 						"\n" + greenColor0 + "\t" + greenColor1 + "\t" + greenColor2 + "\t" + greenColor3 + "\t" + greenColorOffset + 
 						"\n" + blueColor0 + "\t" + blueColor1 + "\t" + blueColor2 + "\t" + blueColor3 + "\t" + blueColorOffset + 
 						"\n" + alpha0 + "\t" + alpha1 + "\t" + alpha2 + "\t" + alpha3 + "\t" + alphaOffset + "\n]";
-		}
+		}*/
 		
 		//public var colorTransform:ColorMatrix;
 		
@@ -134,7 +146,7 @@ package swfdata.dataTags
 			this.ty = ty;
 		}
 		
-		private var colorMatrix:ColorMatrix;
+		/*private var colorMatrix:ColorMatrix;
 		
 		public function getColorTransformMatrix():ColorMatrix 
 		{
@@ -150,6 +162,6 @@ package swfdata.dataTags
 			}
 			
 			return colorMatrix;
-		}
+		}*/
 	}
 }

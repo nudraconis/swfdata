@@ -20,7 +20,7 @@ package swfdata
 		
 		public function get numChildren():int 
 		{
-			return displayContainer.displayObjectsCount;
+			return displayContainer.displayObjectsPlacedCount;
 		}
 		
 		override public function destroy():void 
@@ -48,7 +48,7 @@ package swfdata
 		{
 			var currentMask:DisplayObjectData;
 			
-			var displayObjectsCount:int = displayObjectContainer.displayObjects.length;
+			var displayObjectsCount:int = displayObjectContainer.numChildren
 			for (var i:int = 0; i < displayObjectsCount; i++)
 			{
 				var currentDisplayObject:DisplayObjectData = displayObjectContainer.displayObjects[i];
