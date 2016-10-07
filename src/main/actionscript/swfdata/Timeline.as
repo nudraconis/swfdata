@@ -113,7 +113,6 @@ package swfdata
 		
 		public function gotoAndPlay(frame:Object):void 
 		{
-			
 			play();
 			setFrameByObject(frame);
 		}
@@ -171,7 +170,7 @@ package swfdata
 		public function update():void 
 		{
 			var displayObjectsList:Vector.<DisplayObjectData> = _currentFrameData._displayObjects;
-			var displayObjectsCount:int = displayObjectsList.length;
+			var displayObjectsCount:int = _currentFrameData.displayObjectsPlacedCount;
 			
 			for (var i:int = 0 ; i < displayObjectsCount; i++)
 			{
