@@ -27,6 +27,7 @@ package swfdata
 		
 		override public function get numChildren():int 
 		{
+			return _currentFrameData.displayObjectsPlacedCount;
 		}
 		
 		override public function destroy():void 
