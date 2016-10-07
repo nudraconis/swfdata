@@ -6,7 +6,7 @@ package swfdata
 	{
 		swfdata_inner var _displayObjects:Vector.<DisplayObjectData>;
 		
-		swfdata_inner var displayObjectsCount:int = 0;
+		swfdata_inner var displayObjectsCount:int = 0; //NOTE: это значение только для задание начальной длинны вектора
 		swfdata_inner var displayObjectsPlacedCount:int = 0;
 		
 		//public var depthMap:Object;
@@ -22,7 +22,7 @@ package swfdata
 		
 		public function get numChildren():int
 		{
-			return displayObjectsCount;
+			return displayObjectsPlacedCount;
 		}
 		
 		public function destroy():void 
@@ -70,7 +70,7 @@ package swfdata
 			var i:int;
 
 			var currentDisplayList:Vector.<DisplayObjectData> = _displayObjects;
-			var childsCount:int = currentDisplayList.length;
+			var childsCount:int = displayObjectsPlacedCount;
 
 			for (i = 0; i < childsCount; i++)
 			{
@@ -98,7 +98,7 @@ package swfdata
 		
 		public function gotoAndPlayAll(frameIndex:int):void 
 		{
-			for (var i:int = 0; i < displayObjectsCount; i++)
+			for (var i:int = 0; i < displayObjectsPlacedCount; i++)
 			{
 				if (_displayObjects[i] is ITimelineContainer)
 				{
@@ -109,7 +109,7 @@ package swfdata
 		
 		public function gotoAndStopAll(frameIndex:int):void 
 		{
-			for (var i:int = 0; i < displayObjectsCount; i++)
+			for (var i:int = 0; i < displayObjectsPlacedCount; i++)
 			{
 				var displayObjectAsTimeLine:ITimelineContainer = _displayObjects[i] as ITimelineContainer;
 				if (displayObjectAsTimeLine)
@@ -119,7 +119,7 @@ package swfdata
 		
 		public function update():void 
 		{
-			for (var i:int = 0; i < displayObjectsCount; i++)
+			for (var i:int = 0; i < displayObjectsPlacedCount; i++)
 			{
 				var displayObjectAsUpdatable:IUpdatable = _displayObjects[i] as IUpdatable;
 				
@@ -131,13 +131,14 @@ package swfdata
 		protected function fillData(obj:DisplayObjectContainer):void
 		{
 			var objDisplayObjects:Vector.<DisplayObjectData> = obj.displayObjects;
-			for (var i:int = 0; i < displayObjectsCount; i++)
+			for (var i:int = 0; i < displayObjectsPlacedCount; i++)
 			{
 				//obj.displayObjects.push(_displayObjects[i].clone());
 				objDisplayObjects[i] = _displayObjects[i];
 			}
 			
 			obj.displayObjectsCount = displayObjectsCount;
+			obj.displayObjectsPlacedCount = displayObjectsCount;
 		}
 		
 		public function clone():IDisplayObjectContainer

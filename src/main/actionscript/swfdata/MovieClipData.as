@@ -4,6 +4,7 @@ package swfdata
 	
 	public class MovieClipData extends SpriteData implements ITimeline
 	{
+		//TODO: нужно экстендить дисплей обжект, и имплементить таймлайн, таймлайн в свою очередь должен имплементить контейнер и отдавтаь дату текущего кадра по интерфейсу контейнера
 		public var timeline:Timeline;
 		
 		swfdata_inner var _currentFrameData:FrameData;
@@ -17,6 +18,11 @@ package swfdata
 				timeline = new Timeline(framesCount);
 				_currentFrameData = timeline._currentFrameData;
 			}
+		}
+		
+		override public function get numChildren():int 
+		{
+			return _currentFrameData.displayObjectsCount;
 		}
 		
 		override public function destroy():void 
@@ -148,6 +154,7 @@ package swfdata
 		{
 			//var currentFrame:FrameData = timeline._currentFrameData;
 			//return currentFrame.getObjectByDepth(depth);
+			throw new Error("getObjectByDepth not implemented");
 			return null;
 		}
 		
@@ -162,7 +169,7 @@ package swfdata
 				currentFrameData = timeline._currentFrameData;
 			
 			var currentDisplayList:Vector.<DisplayObjectData> = currentFrameData.displayObjects;
-			var frameChildsCount:int = currentDisplayList.length;
+			var frameChildsCount:int = _currentFrameData.displayObjectsCount;
 			
 			for (i = 0; i < frameChildsCount; i++)
 			{

@@ -29,7 +29,7 @@ package swfdata
 		
 		//public var bounds:Rectagon;
 		
-		public var colorTransform:ColorMatrix// = new ColorTransform();
+		//public var colorTransform:ColorMatrix// = new ColorTransform();
 		
 		swfdata_inner var colorData:ColorData;
 		
@@ -55,23 +55,37 @@ package swfdata
 		
 		public function set alpha(value:Number):void
 		{
-			colorData.a = value;
+			colorData.alphaMultiplier = value;
 		}
 		
 		public function get alpha():Number
 		{
-			return colorData.a;
+			return colorData.alphaMultiplier;
 		}
 		
 		public function destroy():void 
 		{
 			prototype = null;
 			mask = null;
-			colorTransform = null;
+			//colorTransform = null;
 			transform = null;
 			name = null;
 			libraryLinkage = null;
+			colorData = null;
 			//frameData = null;
+		}
+		
+		//public function setColorTransform(matrix:ColorMatrix):void 
+		//{
+		//	colorTransform = matrix;
+		//}
+		
+		public function setColorData(mr:Number = 1, mg:Number = 1, mb:Number = 1, ma:Number = 1, ar:int = 0, ag:int = 0, ab:int = 0, aa:int = 0):void
+		{
+			if (colorData == null)
+				colorData = new ColorData(mr, mg, mb, ma, ar, ag, ab, aa);
+			else
+				colorData.setTo(mr, mg, mb, ma, ar, ag, ab, aa);
 		}
 		
 		public function setTransformMatrix(matrix:Matrix):void
@@ -155,7 +169,7 @@ package swfdata
 			objectCloned.characterId = characterId;
 			objectCloned.libraryLinkage = libraryLinkage;
 			objectCloned.prototype = prototype;
-			objectCloned.colorTransform = colorTransform;
+			//objectCloned.colorTransform = colorTransform;
 			objectCloned.isMask = isMask;
 			objectCloned.mask = mask;
 			objectCloned._x = _x;
@@ -178,6 +192,8 @@ package swfdata
 			
 			return objectCloned;
 		}
+		
+		
 		
 
 		
