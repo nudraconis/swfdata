@@ -109,6 +109,7 @@ package swfdata
 		public function play():void 
 		{
 			this._isPlaying = true;
+			_currentFrameData = frames[_currentFrame];
 		}
 		
 		public function gotoAndPlay(frame:Object):void 
@@ -169,6 +170,9 @@ package swfdata
 		
 		public function update():void 
 		{
+			if (_isPlaying)
+				nextFrame();
+				
 			var displayObjectsList:Vector.<DisplayObjectData> = _currentFrameData._displayObjects;
 			var displayObjectsCount:int = _currentFrameData.displayObjectsPlacedCount;
 			
@@ -179,11 +183,6 @@ package swfdata
 				if (currentDisplayObject != null)
 					currentDisplayObject.update();
 			}
-			
-			if (!_isPlaying)
-				return;
-				
-			nextFrame();
 		}
 		
 		public function currentFrameData():FrameData 

@@ -20,9 +20,13 @@ package swfdata
 			}
 		}
 		
+		public function invalidateCurrentFrame():void
+		{
+			_currentFrameData = timeline._currentFrameData;
+		}
+		
 		override public function get numChildren():int 
 		{
-			return _currentFrameData.displayObjectsCount;
 		}
 		
 		override public function destroy():void 
@@ -76,6 +80,7 @@ package swfdata
 		public function play():void 
 		{
 			timeline.play();
+			_currentFrameData = timeline._currentFrameData;
 		}
 		
 		public function gotoAndPlay(frame:Object):void 
@@ -93,6 +98,7 @@ package swfdata
 		public function stop():void 
 		{
 			timeline.stop();
+			_currentFrameData = timeline._currentFrameData;
 		}
 		
 		public function gotoAndStop(frame:Object):void
@@ -169,7 +175,7 @@ package swfdata
 				currentFrameData = timeline._currentFrameData;
 			
 			var currentDisplayList:Vector.<DisplayObjectData> = currentFrameData.displayObjects;
-			var frameChildsCount:int = _currentFrameData.displayObjectsCount;
+			var frameChildsCount:int = _currentFrameData.displayObjectsPlacedCount;
 			
 			for (i = 0; i < frameChildsCount; i++)
 			{
