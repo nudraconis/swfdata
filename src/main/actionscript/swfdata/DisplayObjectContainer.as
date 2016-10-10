@@ -31,7 +31,7 @@ package swfdata
 			
 			if (_displayObjects)
 			{
-				for (var i:int = 0; i < displayObjectsCount; i++)
+				for (var i:int = 0; i < displayObjectsPlacedCount; i++)
 				{
 					if(_displayObjects[i])
 						_displayObjects[i].destroy();
@@ -137,8 +137,8 @@ package swfdata
 				objDisplayObjects[i] = _displayObjects[i];
 			}
 			
-			obj.displayObjectsCount = displayObjectsCount;
-			obj.displayObjectsPlacedCount = displayObjectsCount;
+			obj.displayObjectsCount = displayObjectsPlacedCount;
+			obj.displayObjectsPlacedCount = displayObjectsPlacedCount;
 		}
 		
 		public function clone():IDisplayObjectContainer
