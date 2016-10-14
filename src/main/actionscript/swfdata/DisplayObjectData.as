@@ -1,9 +1,6 @@
 package swfdata 
 {
-	import flash.display.Graphics;
-	import flash.geom.ColorTransform;
 	import flash.geom.Matrix;
-
 	
 	use namespace swfdata_inner;
 	
