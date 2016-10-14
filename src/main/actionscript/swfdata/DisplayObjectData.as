@@ -42,7 +42,7 @@ package swfdata
 		public var hasPlaced:Boolean = false;
 		
 		public var name:String;
-		
+		public var blendMode:int;	
 		
 		public function DisplayObjectData(characterId:int = -1, displayObjectType:int = 0) 
 		{
@@ -52,7 +52,7 @@ package swfdata
 			//transform = new Matrix();
 			//bounds = new Rectagon(0, 0, 0, 0, transform);
 		}
-		
+
 		public function set alpha(value:Number):void
 		{
 			colorData.alphaMultiplier = value;
@@ -174,6 +174,7 @@ package swfdata
 			objectCloned.mask = mask;
 			objectCloned._x = _x;
 			objectCloned._y = _y;
+			objectCloned.blendMode = blendMode;
 			
 			//objectCloned.maskData.isMask = maskData.isMask;
 			//objectCloned.maskData.isMasked = maskData.isMasked;

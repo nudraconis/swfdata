@@ -21,7 +21,7 @@ package swfdata.dataTags
 		public var hasMove:Boolean;
 		//public var hasVisible:Boolean;
 		//public var hasImage:Boolean;
-		//public var hasBlendMode:Boolean;
+		public var hasBlendMode:Boolean;
 		//public var hasFilterList:Boolean;
 		
 		public var characterId:int;
@@ -93,7 +93,7 @@ package swfdata.dataTags
 		public var clipDepth:int;
 
 		// Forward declarations for TagPlaceObject3
-		//public var blendMode:int;
+		public var blendMode:int;
 		//public var bitmapCache:int;
 		//public var bitmapBackgroundColor:int;
 		public var visible:int;
@@ -120,7 +120,7 @@ package swfdata.dataTags
 		public function toString():String 
 		{
 			return "[SwfPackerTagPlaceObject depth=" + depth + " characterId=" + characterId + " placeMode=" + placeMode + 
-						" hasMatrix=" + hasMatrix + " clipDepth=" + clipDepth + " instanceName=" + instanceName + "]";
+						" hasMatrix=" + hasMatrix + " clipDepth=" + clipDepth + " instanceName=" + instanceName + " hasBlendMode=" + hasBlendMode +" blendMode="+ blendMode + "]";
 		}
 		
 		public function fillData(_placeMode:int, _depth:int, _hasClipDepth:Boolean, _hasName:Boolean, _hasMatrix:Boolean, _hasCharacter:Boolean, _instanceName:String, _clipDepth:int, _characterId:int):void 
