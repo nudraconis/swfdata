@@ -1,25 +1,22 @@
-package swfdata 
+package swfdata
 {
-
-	public class ColorData 
+	
+	public class ColorData
 	{
 		private static var availableInstance:ColorData;
 		
-		
 		[Inline]
-		public static function getWith(data:ColorData):ColorData 
+		public static function getWith(data:ColorData):ColorData
 		{
-			return get(data.redMultiplier, data.greenMultiplier, data.blueMultiplier, data.alphaMultiplier,
-						data.redAdd, data.greenAdd, data.blueAdd, data.alphaAdd);
+			return get(data.redMultiplier, data.greenMultiplier, data.blueMultiplier, data.alphaMultiplier, data.redAdd, data.greenAdd, data.blueAdd, data.alphaAdd);
 		}
 		
 		[Inline]
-		public static function get(redMultiplier:Number = 1, greenMultiplier:Number = 1, blueMultiplier:Number = 1, alphaMultiplier:Number = 1, 
-									redAdd:int = 0, greenAdd:int = 0, blueAdd:int = 0, alphaAdd:int = 0):ColorData 
+		public static function get(redMultiplier:Number, greenMultiplier:Number, blueMultiplier:Number, alphaMultiplier:Number, redAdd:int, greenAdd:int, blueAdd:int, alphaAdd:int):ColorData
 		{
 			var instance:ColorData = ColorData.availableInstance;
 			
-			if (instance != null) 
+			if (instance != null)
 			{
 				ColorData.availableInstance = instance.nextInstance;
 				instance.nextInstance = null;
@@ -27,7 +24,7 @@ package swfdata
 				
 				instance.setTo(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, redAdd, greenAdd, blueAdd, alphaAdd);
 			}
-			else 
+			else
 			{
 				instance = new ColorData(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, redAdd, greenAdd, blueAdd, alphaAdd);
 			}
@@ -48,8 +45,7 @@ package swfdata
 		public var greenAdd:int = 0;
 		public var blueAdd:int = 0;
 		
-		public function ColorData(redMultiplier:Number = 1, greenMultiplier:Number = 1, blueMultiplier:Number = 1, alphaMultiplier:Number = 1, 
-									redAdd:int = 0, greenAdd:int = 0, blueAdd:int = 0, alphaAdd:int = 0) 
+		public function ColorData(redMultiplier:Number = 1, greenMultiplier:Number = 1, blueMultiplier:Number = 1, alphaMultiplier:Number = 1, redAdd:int = 0, greenAdd:int = 0, blueAdd:int = 0, alphaAdd:int = 0)
 		{
 			this.alphaMultiplier = alphaMultiplier;
 			this.blueMultiplier = blueMultiplier;
@@ -63,19 +59,18 @@ package swfdata
 		}
 		
 		[Inline]
-		public final function dispose():void 
+		public final function dispose():void
 		{
 			if (disposed)
 				return;
-				
+			
 			this.nextInstance = ColorData.availableInstance;
 			ColorData.availableInstance = this;
 			
 			disposed = true;
 		}
 		
-		public function setTo(redMultiplier:Number = 1, greenMultiplier:Number = 1, blueMultiplier:Number = 1, alphaMultiplier:Number = 1, 
-									redAdd:int = 0, greenAdd:int = 0, blueAdd:int = 0, alphaAdd:int = 0):void
+		public function setTo(redMultiplier:Number, greenMultiplier:Number, blueMultiplier:Number, alphaMultiplier:Number, redAdd:int, greenAdd:int, blueAdd:int, alphaAdd:int):void
 		{
 			this.alphaMultiplier = alphaMultiplier;
 			this.redMultiplier = redMultiplier;
@@ -86,12 +81,12 @@ package swfdata
 			this.greenAdd = greenAdd;
 			this.blueAdd = blueAdd;
 			this.alphaAdd = alphaAdd;
-			
+		
 			//isUseAdd = redAdd != 0 || greenAdd != 0 || blueAdd != 0 || alphaAdd != 0;
 		}
 		
 		[Inline]
-		public final function setFromData(colorData:ColorData):void 
+		public final function setFromData(colorData:ColorData):void
 		{
 			alphaMultiplier = colorData.alphaMultiplier;
 			redMultiplier = colorData.redMultiplier;
@@ -130,12 +125,11 @@ package swfdata
 			greenAdd += colorData.greenAdd;
 			blueAdd += colorData.blueAdd;
 			alphaAdd += colorData.alphaAdd;
-			
-			
+		
 		}
 		
 		[Inline]
-		public final function preMultiply(colorData:ColorData): void 
+		public final function preMultiply(colorData:ColorData):void
 		{
 			this.redAdd += colorData.redAdd * this.redMultiplier;
 			this.greenAdd += colorData.greenAdd * this.greenMultiplier;
@@ -146,8 +140,7 @@ package swfdata
 			this.greenMultiplier *= colorData.greenMultiplier;
 			this.blueMultiplier *= colorData.blueMultiplier;
 			this.alphaMultiplier *= colorData.alphaMultiplier;
-			
-			
+		
 		}
 		
 		public function get color():uint
@@ -178,11 +171,9 @@ package swfdata
 			colorMatrix.matrix[19] = alphaAdd / 255;
 		}
 		
-		public function toString():String 
+		public function toString():String
 		{
-			return "[ColorData alphaMultiplier=" + alphaMultiplier + " redMultiplier=" + redMultiplier + " greenMultiplier=" + greenMultiplier + 
-						" blueMultiplier=" + blueMultiplier + " alphaAdd=" + alphaAdd + " redAdd=" + redAdd + 
-						" greenAdd=" + greenAdd + " blueAdd=" + blueAdd + " color=" + color + "]";
+			return "[ColorData alphaMultiplier=" + alphaMultiplier + " redMultiplier=" + redMultiplier + " greenMultiplier=" + greenMultiplier + " blueMultiplier=" + blueMultiplier + " alphaAdd=" + alphaAdd + " redAdd=" + redAdd + " greenAdd=" + greenAdd + " blueAdd=" + blueAdd + " color=" + color + "]";
 		}
 	}
 }
