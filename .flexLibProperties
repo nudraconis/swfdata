@@ -5,6 +5,7 @@
     <classEntry path="GeomMath"/>
     <classEntry path="IUpdatable"/>
     <classEntry path="PooledMatrix"/>
+    <classEntry path="swfdata.BitmapLibrary"/>
     <classEntry path="swfdata.ColorData"/>
     <classEntry path="swfdata.ColorMatrix"/>
     <classEntry path="swfdata.DisplayObjectContainer"/>
